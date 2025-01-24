@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Kumbh+Sans:wght@100..900&family=Peralta&display=swap');
+
+:root {
+    --game-blue: #79ACA8;
+    --game-brown: #C8A774;
+    --game-yellow: #F7E68A;
+    --game-bege: #EBB792;
+    --game-red: #F0472B;
+    --game-background: #756c55;
+}
+
+body { 
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--game-background);
+}
+
+#game {
+  width: 100vw;
+  height: 100vh;
+}

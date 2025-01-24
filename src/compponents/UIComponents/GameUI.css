@@ -1,0 +1,38 @@
+/* GAME UI */
+.game-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-title-block {
+    align-items: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-content: center;
+    height: 200px;
+    color: white;
+}
+
+.game-title {
+    font-family: "Barrio", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+}
+
+.game-subtitle {
+    font-family: "Kumbh Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "YOPQ" 300;
+}
