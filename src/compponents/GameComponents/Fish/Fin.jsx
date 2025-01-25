@@ -30,7 +30,7 @@ export default function Fin({position, rotation, size, color, axis}) {
       <>
         <mesh ref={finRef} position={position} rotation={rotation} >
           <boxGeometry args={size} />
-          <meshStandardMaterial color={color} />
+          <meshStandardMaterial color={color} flatShading={true}/>
         </mesh>
       </>
     );

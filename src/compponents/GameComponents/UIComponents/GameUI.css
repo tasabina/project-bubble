@@ -1,0 +1,124 @@
+/* GAME UI */
+.game-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-title-block {
+    align-items: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-content: center;
+    height: 250px;
+    color: white;
+    z-index: 2;
+}
+
+.game-title {
+    font-family: "Barrio", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 55px;
+}
+
+.game-subtitle {
+    font-family: "Kumbh Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "YOPQ" 300;
+    white-space: nowrap;
+    text-indent: 0.4em;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+}
+
+.game-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.game-result {
+    margin-top: 10px;
+    font-family: "Peralta", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    font-variation-settings: "YOPQ" 300;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.game-result-title {
+    color: var(--game-red);
+}
+
+.right-border {
+    border-right:rgba(255, 255, 255, 0.7) 1px solid;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    height: 65px;
+}
+
+.controls
+{
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.controls .raw
+{
+    display: flex;
+    justify-content: center;
+}
+
+.controls .key
+{
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    border-radius: 15px;
+    border: 1px solid #ffffff;
+    background: rgba(181, 181, 181, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Kumbh Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "YOPQ" 300;
+    font-size: 13px;
+    color: #ffffff;
+}
+
+.controls .key.large
+{
+    width: 144px;
+}
+
+.controls .key.active
+{
+    background: rgba(0, 0, 0, 0.7)
+}

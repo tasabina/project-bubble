@@ -12,10 +12,10 @@ export default function Experience()
             enableZoom={true}
             enableRotate={true}
             enablePan={false}
-            minDistance={0}
+            minDistance={10}
         />
 
-        <Physics debug>
+        <Physics  gravity={[0, 0, 0]}>
             <Lights />
             <Level />
         </Physics>

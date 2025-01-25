@@ -20,11 +20,11 @@ export default function Tail() {
             <group ref={tileRef}  position={[-1.1, 0, 0]}>
                 <mesh position={[0, -0.3, 0]} rotation={[0, 0, Math.PI / 4]} >
                     <boxGeometry args={[0.6, 0.5, 0.1]} /> {/* A box for the tail */}
-                    <meshStandardMaterial color="orange" />
+                    <meshStandardMaterial color={COLORS.BEGE} />
                 </mesh>
                 <mesh position={[0, 0.3, 0]} rotation={[0, 0, Math.PI / -4]} >
                     <boxGeometry args={[0.6, 0.5, 0.1]} /> {/* A box for the tail */}
-                    <meshStandardMaterial color="orange" />
+                    <meshStandardMaterial color={COLORS.BEGE} />
                 </mesh>
             </group>
         </>

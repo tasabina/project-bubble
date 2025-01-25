@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
-import Loader from './compponents/UIComponents/Loader'
-import GameUI from './compponents/UIComponents/GameUI'
+import Loader from './compponents/GameComponents/UIComponents/Loader'
+import GameUI from './compponents/GameComponents/UIComponents/GameUI'
 import { Scene } from './compponents/GameComponents/Scene'
 
 function App() {
@@ -11,7 +11,6 @@ function App() {
   return (
     <>
       <Loader status={true}/>
-      <GameUI/>
       <Scene/>
     </>
   )
