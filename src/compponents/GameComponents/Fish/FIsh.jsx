@@ -2,10 +2,12 @@ import COLORS from '../Colors';
 import Tail from './Tail';
 import Body from './Body';
 import Fin from './Fin';
+import { CuboidCollider } from '@react-three/rapier';
 
 export default function Fish() {
     return (
       <group>
+        {/* <CuboidCollider position={[0, 0, 0]} args={[1 ,1 ,1]}/> */}
         <Body/>
         <Tail/>
         {/* Top Fin */}

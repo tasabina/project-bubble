@@ -28,6 +28,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 55px;
+    text-shadow: 5px 3px 3px #39464f;
 }
 
 .game-subtitle {
@@ -67,7 +68,15 @@
 }
 
 .right-border {
-    border-right:rgba(255, 255, 255, 0.7) 1px solid;
+    /* border-right:rgba(255, 255, 255, 0.7) 1px solid; */
+}
+
+.debug {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+
 }
 
 .column {
@@ -75,7 +84,7 @@
     flex-direction: column;
     align-items: center;
     width: 120px;
-    height: 65px;
+    height: 25px;
 }
 
 .controls
@@ -90,6 +99,35 @@
 .controls .raw
 {
     display: flex;
+    justify-content: center;
+}
+
+.left
+{
+    justify-content: start !important;
+}
+
+.right
+{
+    justify-content: end !important;
+    margin-right: 10px;
+}
+
+.w-100
+{
+    width: 100px !important;
+}
+
+.btn
+{
+    cursor: pointer;
+}
+
+.block.left {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 180px;
     justify-content: center;
 }
 
@@ -121,4 +159,34 @@
 .controls .key.active
 {
     background: rgba(0, 0, 0, 0.7)
+}
+.final-screen
+{
+    display: block;
+    position: absolute;
+    margin: auto;
+    z-index: 100;
+    color: white;
+    width: 50%;
+    height: 200px;
+    text-align: center;
+    font-family: "Kumbh Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings: "YOPQ" 300;
+    font-size: 2rem;
+    color: #ffffff;
+    text-shadow: 5px 3px 3px #536c7d;
+}
+
+.final-screen-score {
+    font-family: "Peralta", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    font-variation-settings: "YOPQ" 300;
+    white-space: nowrap;
+    text-transform: uppercase;
 }

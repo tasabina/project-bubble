@@ -1,54 +1,62 @@
 import { create } from 'zustand'
 import { subscribeWithSelector } from 'zustand/middleware'
 
-export default create(subscribeWithSelector((set) =>
-{
-    return {
-        blocksCount: 10,
-        blocksSeed: 0,
-        
-        /**
-         * Time
-         */
-        startTime: 0,
-        endTime: 0,
+export default create(subscribeWithSelector((set, get) => ({
+    seconds: 0,
+    score: 0,
+    status: 'ready',
 
-        /**
-         * Phases
-         */
-        phase: 'ready',
-
-        start: () =>
+    start: () =>
+    {
+        set((state) =>
         {
-            set((state) =>
-            {
-                if(state.phase === 'ready')
-                    return { phase: 'playing', startTime: Date.now() }
+            if(state.status === 'ready')
+                return { status: 'playing' }
 
-                return {}
-            })
-        },
+            return {}
+        })
+    },
 
-        restart: () =>
+    reset: () =>
+    {
+        set((state) =>
         {
-            set((state) =>
-            {
-                if(state.phase === 'playing' || state.phase === 'ended')
-                    return { phase: 'ready', blocksSeed: Math.random() }
+            if(state.status === 'playing' || state.status === 'ended')
+                return { status: 'ready', seconds: 0, score: 0 }
 
-                return {}
-            })
-        },
+            return {}
+        })
+    },
 
-        end: () =>
+    stop: () =>
+    {
+        set((state) =>
         {
-            set((state) =>
-            {
-                if(state.phase === 'playing')
-                    return { phase: 'ended', endTime: Date.now() }
+            if(state.status === 'playing')
+                return { status: 'ended' }
 
-                return {}
-            })
+            return {}
+        })
+    },
+
+    tick: () => {
+        const { seconds, stop } = get();
+        if (seconds >= 60) {
+          stop();
+        } else {
+          set((state) => ({ seconds: state.seconds + 1 }));
         }
-    }
-}))
+    },
+
+    increaseScore: () => {
+        set((state) =>
+            {
+                if(state.status === 'playing')
+                    return { score: state.score + 1 }
+    
+                return {}
+            }
+        )
+    },
+
+  })))

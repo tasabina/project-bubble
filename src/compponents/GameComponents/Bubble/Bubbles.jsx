@@ -1,29 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import Bubble from './Bubble';
+import useGame from '../../store/useGame.jsx'
 
-export default function Bubbles({ position, onCollide }) {
+export default function Bubbles({ position }) {
   const [bubbles, setBubbles] = useState([]);
 
-  const generateBubbles = (interval) => {
+  const running = useGame()
+
+  const generateBubbles = () => {
     setBubbles((prevBubbles) => [
       ...prevBubbles,
-      <Bubble position={position} onCollide={onCollide} />
+      <Bubble position={position}/>
     ]);
   };
 
-  const interval = Math.random()
+  const range = Math.random()
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      generateBubbles(interval);
-    }, interval*10000);
+    let interval;
+    const unsubscribe = useGame.subscribe(
+      (state) => state.status,
+      (status) => {
+        if (status == 'playing') {
+          interval = setInterval(() => {
+            generateBubbles();
+          }, range*10000);
+        } else {
+          clearInterval(interval);
+        }
+      },
+      { fireImmediately: true }
+    );
 
-    return () => clearInterval(timer);
-  }, [position, onCollide]);
+    return () => {
+      clearInterval(interval);
+      unsubscribe();
+    }
+  }, []);
 
   return (
     <group>
-      {bubbles}
+      {running && bubbles}
     </group>
   );
 }

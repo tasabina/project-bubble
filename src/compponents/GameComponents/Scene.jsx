@@ -3,7 +3,7 @@ import Experience from './Experience';
 import { KeyboardControls } from '@react-three/drei';
 import GameUI from './UIComponents/GameUI';
 
-export function Scene() {
+export function Scene({isLoaded}) {
   return (
     <KeyboardControls
       map={[
@@ -11,11 +11,11 @@ export function Scene() {
         { name: 'backward', keys: [ 'ArrowDown', 'KeyS' ] },
         { name: 'leftward', keys: [ 'ArrowLeft', 'KeyA' ] },
         { name: 'rightward', keys: [ 'ArrowRight', 'KeyD' ] },
-        { name: 'jump', keys: [ 'Space' ] },
+        { name: 'move', keys: [ 'Space' ] },
       ]}
     >
     <GameUI/>
-      <Canvas
+      {!isLoaded && <Canvas
         shadows
         camera={ {
             fov: 45,
@@ -25,7 +25,7 @@ export function Scene() {
         } }
       >
           <Experience/>
-      </Canvas>
+      </Canvas>}
     </KeyboardControls>
   );
 }

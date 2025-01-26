@@ -1,12 +1,16 @@
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import COLORS from "../Colors";
 import { interactionGroups, RigidBody } from "@react-three/rapier";
+import useGame from '../../store/useGame.jsx'
 
-export default function Bubble({position, onCollide})
+export default function Bubble({position})
 {
     let time = 0;
     const rigidBodyRef = useRef(null);
+
+    const [isVisible, setIsVisible] = useState(true);
+    const increaseScore = useGame((state) => state.increaseScore);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -23,6 +27,13 @@ export default function Bubble({position, onCollide})
         return Math.random() * (max - min) + min;
     }
 
+    const getCollision = (event) => {
+        if (event.colliderObject.name == "Player") {
+            increaseScore();
+            setIsVisible(false);
+        }
+    }
+
     return (
         <RigidBody
             ref={ rigidBodyRef }
@@ -35,11 +46,9 @@ export default function Bubble({position, onCollide})
             angularDamping={ 0.5 }
             position={ position }
             collisionGroups={interactionGroups(0, [0, 1])}
-            onCollisionEnter={(event) => {
-                onCollide && onCollide(this, event);
-            }}
+            onCollisionEnter={getCollision}
         >
-            <mesh castShadow >
+        { isVisible && <mesh castShadow >
                 <icosahedronGeometry args={[getRandomArbitrary(0.25, 0.4), 0]} />
                 <meshStandardMaterial
                     metalness={0}
@@ -55,7 +64,7 @@ export default function Bubble({position, onCollide})
                     shininess={10}
                     wireframe={true}
                     />
-            </mesh>
+            </mesh>}
         </RigidBody>
     )
 }
